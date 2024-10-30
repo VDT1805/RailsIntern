@@ -12,4 +12,5 @@
 puts "Start seeding"
 App.create(name: 'Datadog')
 App.create(name: 'Sendgrid')
+Org.create(name: "Company A").admins.create(name: "Admin A", email: "test@example.com", password: "123")
 puts "Seeding done"
