@@ -1,0 +1,19 @@
+<%= form_with(model: @conn, url:org_app_connections_url) do |f| %>
+  <h3>Connecting to <%= @app.name %></h3>
+  
+  <%= f.fields_for :creds do |cred_fields| %>
+    <div class="cred">
+      <%= cred_fields.label :label %>  
+      <%= cred_fields.text_field :label %>  
+      <div class="dynamic-fields">
+        <% if @app.name == 'Datadog' %>
+          <%= render 'shared/datadog_fields', cred_fields: cred_fields %>
+        <% elsif @app.name == 'Sendgrid' %>
+          <%= render 'shared/sendgrid_fields', cred_fields: cred_fields %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <%= f.submit %>
+<% end %>
