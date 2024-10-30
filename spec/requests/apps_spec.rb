@@ -25,13 +25,13 @@ RSpec.describe "/apps", type: :request do
   describe "GET /index" do
     it "renders a successful response" do
       App.create! valid_attributes
-      get org_apps_url(org_id: '1')
+      get org_apps_url(org_id: 1)
       expect(response).to be_successful
     end
 
     it "returns app with Datadog Test name" do
       App.create! valid_attributes
-      get org_apps_url(org_id: '1')
+      get org_apps_url(org_id: 1)
       expect(response).to have_http_status(:success)
       expect(response.body).to include("Datadog Test")
     end
