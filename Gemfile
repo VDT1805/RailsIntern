@@ -60,3 +60,7 @@ group :test do
 end
 
 gem "rspec-rails", "~> 7.0"
+
+gem "sendgrid-ruby", "~> 6.7"
+
+gem "faraday", "~> 2.12"
