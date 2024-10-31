@@ -1,7 +1,19 @@
 <%= form_with(model: @conn, url:org_app_connections_url) do |f| %>
   <h3>Connecting to <%= @app.name %></h3>
+  <% if @conn.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@conn.errors.count, "error") %> prohibited this connection from being saved:</h2>
+      <ul>
+        <% @conn.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   
-  <%= f.fields_for :creds do |cred_fields| %>
+  <%= f.hidden_field :app_id, value: params[:app_id]  %>
+  <%= f.hidden_field :org_id, value: params[:org_id]  %>
+  <%= f.fields_for :cred do |cred_fields| %>
     <div class="cred">
       <%= cred_fields.label :label %>  
       <%= cred_fields.text_field :label %>  

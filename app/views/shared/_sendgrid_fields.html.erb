@@ -1,6 +1,6 @@
-<%= cred_fields.fields_for :sendgrids do |sendgrids_field| %>
-  <%= sendgrids_field.label :api_key, "API Key" %>  
-  <%= sendgrids_field.text_field :api_key %>
-  <%= sendgrids_field.label :subuser, "Subuser" %>  
-  <%= sendgrids_field.text_field :subuser %>
+<%= cred_fields.fields_for :sendgrid do |sendgrid_fields| %>
+  <%= sendgrid_fields.label :api_key, "API Key" %>  
+  <%= sendgrid_fields.text_field :api_key %>
+  <%= sendgrid_fields.label :subuser, "Subuser" %>  
+  <%= sendgrid_fields.text_field :subuser %>
 <% end %>

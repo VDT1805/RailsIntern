@@ -8,31 +8,36 @@ class ConnectionsController < ApplicationController
   def new
     @app = App.find(params[:app_id])
     @conn = Connection.new
-    @cred = @conn.creds.build
+    @cred = @conn.build_cred
     case @app.name
     when "Datadog"
-      @cred.datadogs.build
+      @cred.build_datadog
     when "Sendgrid"
-      @cred.sendgrids.build
+      @cred.build_sendgrid
     end
   end
 
   def create
-    abort connection_params.inspect
+    @app = App.find(params[:app_id])
+    # abort connection_params.inspect
+    @conn = Connection.create(connection_params)
+    if @conn.save
+      redirect_to @conn
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
   def connection_params
     params.require(:connection).permit(
-      connection_attributes: [
       :app_id,
-      :app_type,
-      creds_attributes: [
+      :org_id,
+      cred_attributes: [
         :label,
-        datadogs_attributes: [ :api_key, :application_key, :subdomain ],
-        sendgrids_attributes: [ :api_key, :subuser ]
+        datadog_attributes: [ :api_key, :application_key, :subdomain ],
+        sendgrid_attributes: [ :api_key, :subuser ]
         ]
-      ]
     )
   end
 end
