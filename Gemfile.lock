@@ -82,6 +82,7 @@ GEM
     brakeman (6.2.2)
       racc
     builder (3.3.0)
+    byebug (11.1.3)
     capybara (3.40.0)
       addressable
       matrix
@@ -265,7 +266,6 @@ GEM
       rubocop-performance
       rubocop-rails
     ruby-progressbar (1.13.0)
-    ruby_http_client (3.5.5)
     rubyzip (2.3.2)
     securerandom (0.3.1)
     selenium-webdriver (4.25.0)
@@ -274,8 +274,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sendgrid-ruby (6.7.0)
-      ruby_http_client (~> 3.4)
+    sentry-ruby (5.21.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -329,6 +330,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  byebug (~> 11.1)
   capybara
   debug
   error_highlight (>= 0.4.0)
@@ -341,7 +343,7 @@ DEPENDENCIES
   rspec-rails (~> 7.0)
   rubocop-rails-omakase
   selenium-webdriver
-  sendgrid-ruby (~> 6.7)
+  sentry-ruby (~> 5.21)
   sprockets-rails
   stimulus-rails
   turbo-rails
