@@ -1,0 +1,8 @@
+<%= cred_fields.fields_for :datadog do |datadog_fields| %>
+  <%= datadog_fields.label :api_key, "API Key" %>  
+  <%= datadog_fields.text_field :api_key %>
+  <%= datadog_fields.label :application_key, "Application Key" %>  
+  <%= datadog_fields.text_field :application_key %>
+  <%= datadog_fields.label :subdomain, "Subdomain" %>  
+  <%= datadog_fields.text_field :subdomain %>
+<% end %>
