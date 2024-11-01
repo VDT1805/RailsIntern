@@ -60,3 +60,10 @@ group :test do
 end
 
 gem "rspec-rails", "~> 7.0"
+
+
+gem "faraday", "~> 2.12"
+
+gem "byebug", "~> 11.1", :groups => [:development, :test]
+
+gem "sentry-ruby", "~> 5.21"
