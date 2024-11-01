@@ -19,10 +19,9 @@ class ConnectionsController < ApplicationController
 
   def create
     @app = App.find(params[:app_id])
-    # abort connection_params.inspect
-    @conn = Connection.create(connection_params)
+    @conn = Connection.new(connection_params)
     if @conn.save
-      redirect_to @conn
+      redirect_to org_connection_path(id: @conn.id)
     else
       render :new, status: :unprocessable_entity
     end
