@@ -6,5 +6,7 @@ class Datadog < ApplicationRecord
   validates :api_key, presence: true
   validates :application_key, presence: true
   validates :subdomain, presence: true
+  
+  validates_with DatadogValidator
 
 end

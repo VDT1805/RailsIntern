@@ -6,5 +6,4 @@ class Connection < ApplicationRecord
   has_many :accounts
 
   accepts_nested_attributes_for :cred
-  validates_with ConnectionValidator
 end

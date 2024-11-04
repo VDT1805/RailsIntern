@@ -1,10 +1,4 @@
 class ConnectionsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
   def new
     @app = App.find(params[:app_id])
     @conn = Connection.new
