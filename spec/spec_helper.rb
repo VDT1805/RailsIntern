@@ -21,8 +21,12 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
 
     # Replace sensitive data with placeholders using Rails credentials
-  c.filter_sensitive_data('<DATADOG_API_KEY>') { Rails.application.credentials.dig(:datadog, :api_key) }
-  c.filter_sensitive_data('<DATADOG_APP_KEY>') { Rails.application.credentials.dig(:datadog, :application_key) }
+  c.filter_sensitive_data('<DATADOG_API_KEY>') do |interaction|
+    interaction.request.headers['DD_API_KEY'].first
+  end
+  c.filter_sensitive_data('<DATADOG_APP_KEY>') do |interaction|
+    interaction.request.headers['DD_APP_KEY'].first
+  end
 end
 
 RSpec.configure do |config|
