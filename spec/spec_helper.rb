@@ -13,6 +13,18 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/cassettes'
+  c.hook_into :faraday
+  c.configure_rspec_metadata!
+
+    # Replace sensitive data with placeholders using Rails credentials
+  c.filter_sensitive_data('<DATADOG_API_KEY>') { Rails.application.credentials.dig(:datadog, :api_key) }
+  c.filter_sensitive_data('<DATADOG_APP_KEY>') { Rails.application.credentials.dig(:datadog, :application_key) }
+end
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
