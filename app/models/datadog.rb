@@ -9,4 +9,7 @@ class Datadog < ApplicationRecord
   
   validates_with DatadogValidator
 
+  after_save_commit do
+    DatadogSyncJob.perform_now(api_key: api_key,application_key: application_key,subdomain: subdomain,connection_id: self.cred.connection_id)
+  end
 end
