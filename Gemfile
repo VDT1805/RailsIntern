@@ -69,3 +69,5 @@ gem "byebug", "~> 11.1", :groups => [:development, :test]
 gem "sentry-ruby", "~> 5.21"
 
 gem "vcr", "~> 6.3"
+
+gem "solid_queue", "~> 1.0"
