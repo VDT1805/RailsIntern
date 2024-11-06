@@ -31,7 +31,7 @@ RSpec.describe DatadogSyncJob, type: :job do
         {
           api_key: "",
           application_key: "",
-          subdomain: "datadoghq.com",
+          subdomain: subdomain,
           connection_id: connection.id
         }
       end
