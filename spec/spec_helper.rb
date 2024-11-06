@@ -20,12 +20,15 @@ VCR.configure do |c|
   c.hook_into :faraday
   c.configure_rspec_metadata!
 
-    # Replace sensitive data with placeholders using Rails credentials
+  # Replace sensitive data with placeholders using Rails credentials
   c.filter_sensitive_data('<DATADOG_API_KEY>') do |interaction|
     interaction.request.headers['DD_API_KEY'].first
   end
   c.filter_sensitive_data('<DATADOG_APP_KEY>') do |interaction|
-    interaction.request.headers['DD_APP_KEY'].first
+    interaction.request.headers['DD_APP_KEY']&.first
+  end
+  c.filter_sensitive_data('<DATADOG_APP_KEY>') do |interaction|
+    interaction.request.headers['DD_APPLICATION_KEY']&.first
   end
 end
 
