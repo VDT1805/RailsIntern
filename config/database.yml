@@ -19,15 +19,25 @@ default: &default
   socket: /tmp/mysql.sock
 
 development:
-  <<: *default
-  database: rails_intern_development
+  primary: &primary_development
+    <<: *default
+    database: rails_intern_development
+  queue:
+    <<: *primary_development
+    database: rails_intern_development_queue
+    migrations_paths: db/queue_migrate
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: rails_intern_test
+  primary: &primary_test
+    <<: *default
+    database: rails_intern_test
+  queue:
+    <<: *primary_test
+    database: rails_intern_test_queue
+    migrations_paths: db/queue_migrate
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,7 +60,12 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: rails_intern_production
-  username: rails_intern
-  password: <%= ENV["RAILS_INTERN_DATABASE_PASSWORD"] %>
+  primary: &primary_production
+    <<: *default
+    database: rails_intern_production
+    username: rails_intern
+    password: <%= ENV["RAILS_INTERN_DATABASE_PASSWORD"] %>
+  queue:
+    <<: *primary_production
+    database: rails_intern_production_queue
+    migrations_paths: db/queue_migrate
