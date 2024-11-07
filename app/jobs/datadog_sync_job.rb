@@ -1,6 +1,6 @@
 class DatadogSyncJob < ApplicationJob
   queue_as :default
-  discard_on StandardError
+
   def perform(job)
       conn = Faraday.new(
         url: "https://api.datadoghq.com",

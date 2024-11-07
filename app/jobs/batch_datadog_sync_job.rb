@@ -1,6 +1,5 @@
 class BatchDatadogSyncJob < ApplicationJob
   queue_as :default
-  discard_on StandardError
   def perform(job)
     # Do something later
     datadog_credential = Datadog.find(job[:connection_id])

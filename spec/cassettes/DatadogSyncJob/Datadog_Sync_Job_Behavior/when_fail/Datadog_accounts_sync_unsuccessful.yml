@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datadoghq.com/api/v2/users
+    uri: https://api.datadoghq.com/api/v2/users?page%5Bnumber%5D=0&page%5Bsize%5D=1
     body:
       encoding: US-ASCII
       string: ''
@@ -12,9 +12,9 @@ http_interactions:
       Content-Type:
       - application/json
       DD_API_KEY:
-      - ''
+      - "<DATADOG_API_KEY>"
       DD_APPLICATION_KEY:
-      - ''
+      - "<DATADOG_APP_KEY>"
       DD_SITE:
       - datadoghq.com
   response:
@@ -23,7 +23,7 @@ http_interactions:
       message: Forbidden
     headers:
       date:
-      - Wed, 06 Nov 2024 04:37:01 GMT
+      - Thu, 07 Nov 2024 02:08:58 GMT
       content-type:
       - application/json
       content-length:
@@ -37,5 +37,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"errors":["Forbidden"]}'
-  recorded_at: Wed, 06 Nov 2024 04:37:01 GMT
+  recorded_at: Thu, 07 Nov 2024 02:08:58 GMT
 recorded_with: VCR 6.3.1
