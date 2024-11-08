@@ -15,7 +15,7 @@ class ConnectionsController < ApplicationController
     case @app.name
     when "Datadog"
       @cred.build_datadog
-    when "Sengrid"
+    when "Sendgrid"
       @cred.build_sendgrid
     end
   end

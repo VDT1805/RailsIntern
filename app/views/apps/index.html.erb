@@ -2,7 +2,7 @@
 <ul>
     <% @apps.each do |app| %>
         <li> 
-            <%= app.name %>
+            <%= link_to app.name, new_org_app_connection_url(app_id: app.id, org_id: @org.id)%>
         </li>
     <%end%>
 </ul>
