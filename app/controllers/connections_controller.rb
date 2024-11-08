@@ -1,18 +1,28 @@
 class ConnectionsController < ApplicationController
+  def index
+    @org = Org.find(params[:org_id])
+    @connections = @org.connections
+  end
+  def show
+    @conn = Connection.find(params[:id])
+    @app = @conn.app
+  end
   def new
     @app = App.find(params[:app_id])
+    @org = Org.find(params[:org_id])
     @conn = Connection.new
     @cred = @conn.build_cred
     case @app.name
     when "Datadog"
       @cred.build_datadog
-    when "Sendgrid"
+    when "Sengrid"
       @cred.build_sendgrid
     end
   end
 
   def create
     @app = App.find(params[:app_id])
+    @org = Org.find(params[:org_id])
     @conn = Connection.new(connection_params)
     if @conn.save
       redirect_to org_connection_path(id: @conn.id)
