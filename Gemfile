@@ -71,3 +71,5 @@ gem "sentry-ruby", "~> 5.21"
 gem "vcr", "~> 6.3"
 
 gem "solid_queue", "~> 1.0"
+
+gem "mission_control-jobs", "~> 0.4.0"
