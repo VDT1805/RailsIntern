@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_29_094620) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_11_063801) do
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -88,6 +88,27 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_29_094620) do
     t.index ["cred_id"], name: "index_sendgrids_on_cred_id"
   end
 
+  create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "token", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_sessions_on_token", unique: true
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "org_id", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+    t.index ["org_id"], name: "index_users_on_org_id"
+  end
+
   add_foreign_key "accounts", "connections"
   add_foreign_key "admins", "orgs"
   add_foreign_key "connections", "apps"
@@ -96,4 +117,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_29_094620) do
   add_foreign_key "datadogs", "creds"
   add_foreign_key "employees", "orgs"
   add_foreign_key "sendgrids", "creds"
+  add_foreign_key "sessions", "users"
+  add_foreign_key "users", "orgs"
 end

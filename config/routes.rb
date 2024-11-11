@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
+  get "dashboard", to: "home#dashboard"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :orgs, only: [] do
     resources :connections, only: [ :index, :show ]
@@ -18,5 +21,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "home#index"
 end

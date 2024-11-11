@@ -17,9 +17,25 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%if authenticated?%>
+      <div> 
+        <%=Current.user.email_address%>
+        <hr>
+        <%= button_to 'Sign Out', session_path, method: :delete %>
+        <hr>
+          <%= notice %>
+          <%= alert %>
+        <hr>
+      </div>
+    <%end%>
+    <div> 
+
+    </div>
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %>
+    <%= link_to 'Dashboard', dashboard_path %>
     <%= yield %>
   </body>
 </html>
