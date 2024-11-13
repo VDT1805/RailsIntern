@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datadoghq.com/api/v1/users
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.0
+      Content-Type:
+      - application/json
+      DD_API_KEY:
+      - "<DATADOG_API_KEY>"
+      DD_APPLICATION_KEY:
+      - "<DATADOG_APP_KEY>"
+      DD_SITE:
+      - datadoghq.com
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      date:
+      - Fri, 08 Nov 2024 03:11:37 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '24'
+      connection:
+      - keep-alive
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"errors":["Forbidden"]}'
+  recorded_at: Fri, 08 Nov 2024 03:11:37 GMT
+recorded_with: VCR 6.3.1

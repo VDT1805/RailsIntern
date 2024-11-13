@@ -1,4 +1,4 @@
-<%= form_with(model: @conn, url:org_app_connections_url) do |f| %>
+<%= form_with(model: [@app,@conn]) do |f| %>
   <h3>Connecting to <%= @app.name %></h3>
   <% if @conn.errors.any? %>
     <div style="color: red">
@@ -12,7 +12,7 @@
   <% end %>
   
   <%= f.hidden_field :app_id, value: params[:app_id]  %>
-  <%= f.hidden_field :org_id, value: params[:org_id]  %>
+  <%= f.hidden_field :org_id, value: @org.id  %>
   <%= f.fields_for :cred do |cred_fields| %>
     <div class="cred">
       <%= cred_fields.label :label %>  

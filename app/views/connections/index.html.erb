@@ -1,0 +1,9 @@
+<h1> List connection</h1>
+<h2> <%= @org.name %>'s connection list</h2>
+<h3> Number of connections: <%= @connections.length %></h3>
+
+<% @connections.each do |conn|%>
+    <li>
+      <%= link_to "#{conn.app.name}#{conn.cred.label.present? ? " (#{conn.cred.label})" : ""}", connection_path(id: conn.id) %>
+    </li>
+<%end%>

@@ -10,7 +10,10 @@
 
 
 puts "Start seeding"
-App.create(name: 'Datadog')
-App.create(name: 'Sendgrid')
-Org.create(name: "Company A").admins.create(name: "Admin A", email: "test@example.com", password: "123")
+App.find_or_create_by!(name: 'Datadog')
+App.find_or_create_by!(name: 'Sendgrid')
+Org.find_or_create_by!(name: "Company A").users.find_or_create_by!(email_address: "test@example.com") do |user|
+  user.password = "123"
+end
+
 puts "Seeding done"

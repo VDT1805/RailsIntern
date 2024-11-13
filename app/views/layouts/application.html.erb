@@ -13,11 +13,34 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <!-- Minified version -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%if authenticated?%>
+      <div> 
+        <%=Current.user.email_address%>
+        <hr>
+        <%= button_to 'Log Out', session_path, method: :delete %>
+        <hr>
+          <%= notice %>
+          <%= alert %>
+        <hr>
+      </div>
+    <%end%>
+    <div> 
+
+    </div>
   </head>
 
   <body>
+    <div>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Dashboard', dashboard_path %>
+        <%= link_to 'Apps', apps_path %>
+        <%= link_to 'Connections', connections_path %>
+    </div>
+    
     <%= yield %>
   </body>
 </html>
