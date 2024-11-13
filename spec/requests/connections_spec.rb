@@ -5,6 +5,9 @@ include Rails.application.routes.url_helpers
 RSpec.describe "Connections", type: :request do
   let(:org) { Org.create!(name: "Company A") }
   let(:application) { App.create!(name: "Datadog") }
+  let (:user) {
+    org.users.create!(email_address: "test1@example.com", password: "123")
+  }
   let(:valid_attributes) do
     {
       app_id: application.id,
@@ -35,10 +38,14 @@ RSpec.describe "Connections", type: :request do
     }
   end
 
+  before(:each) {
+    post session_url, params: { email_address: user.email_address, password: user.password }
+  }
+
 
   describe "GET /index" do
     it "returns a successful response" do
-      get org_connections_path(org_id: org.id)
+      get connections_path
       expect(response).to be_successful
     end
   end
@@ -46,7 +53,7 @@ RSpec.describe "Connections", type: :request do
 
   describe "GET /new" do
     it "returns a successful response" do
-      get new_org_app_connection_url(app_id: application.id, org_id: org.id)
+      get new_app_connection_url(app_id: application.id)
       expect(response).to be_successful
       expect(response.body).to include("Datadog")
     end
@@ -55,7 +62,7 @@ RSpec.describe "Connections", type: :request do
   describe "GET /show", :vcr do
     it "returns a successful response" do
       conn = Connection.create!(valid_attributes)
-      get org_connection_url(org_id: org.id, id: conn.id)
+      get connection_url(id: conn.id)
       expect(response).to be_successful
       expect(response.body).to include(conn.id.to_s)
     end
@@ -65,26 +72,26 @@ RSpec.describe "Connections", type: :request do
     context "with valid parameters" do
       it "creates a new Connection" do
         expect {
-          post org_app_connections_path(app_id: application.id, org_id: org.id), params: { connection: valid_attributes }
+          post app_connections_path(app_id: application.id), params: { connection: valid_attributes }
         }.to change(Connection, :count).by(1)
       end
 
       it "redirects to the connection show page" do
-        post org_app_connections_path(app_id: application.id, org_id: org.id), params: { connection: valid_attributes }
+        post app_connections_path(app_id: application.id), params: { connection: valid_attributes }
         connection = Connection.last
-        expect(response).to redirect_to(org_connection_url(id: connection.id.to_s))
+        expect(response).to redirect_to(connection_url(id: connection.id.to_s))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Connection" do
         expect {
-          post org_app_connections_path(app_id: application.id, org_id: org.id), params: { connection: invalid_attributes }
+          post app_connections_path(app_id: application.id), params: { connection: invalid_attributes }
         }.to change(Connection, :count).by(0)
       end
 
       it "renders the :new template with unprocessable entity status" do
-        post org_app_connections_path(app_id: application.id, org_id: org.id), params: { connection: invalid_attributes }
+        post app_connections_path(app_id: application.id), params: { connection: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end

@@ -8,5 +8,9 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    org = Current.user.org
+    @org_name = org.name
+    @connection_count = org.connections.count
+    @accounts_count = Account.joins(:connection).where(connections: { org_id: org.id }).count
   end
 end

@@ -1,6 +1,7 @@
 <h1> Connection details</h1>
-<h2> Connection id: <%=@conn.id%>, connects to <%= @app.name %> application</h2>
+<h2> Connection id: <%=@conn.id%>, connecting to <%= @app.name %> application</h2>
 <h3> Number of accounts: <%= @conn.accounts.length %></h3>
+<h4>Label: <%=@conn.cred.label%></h4>
 <% @conn.accounts.each do |acc|%>
     <li>
       <%= acc.email %>

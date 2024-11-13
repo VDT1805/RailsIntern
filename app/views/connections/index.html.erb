@@ -4,6 +4,6 @@
 
 <% @connections.each do |conn|%>
     <li>
-      <%= link_to conn.app.name, org_connection_path(id: conn.id) %>
+      <%= link_to "#{conn.app.name}#{conn.cred.label.present? ? " (#{conn.cred.label})" : ""}", connection_path(id: conn.id) %>
     </li>
 <%end%>

@@ -1,6 +1,6 @@
 class AppsController < ApplicationController
   def index
-    @org = Org.find(params[:org_id])
+    @org = Current.user.org
     @apps = App.all
   end
 end

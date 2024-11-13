@@ -21,7 +21,7 @@
       <div> 
         <%=Current.user.email_address%>
         <hr>
-        <%= button_to 'Sign Out', session_path, method: :delete %>
+        <%= button_to 'Log Out', session_path, method: :delete %>
         <hr>
           <%= notice %>
           <%= alert %>
@@ -34,8 +34,13 @@
   </head>
 
   <body>
-    <%= link_to 'Home', root_path %>
-    <%= link_to 'Dashboard', dashboard_path %>
+    <div>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Dashboard', dashboard_path %>
+        <%= link_to 'Apps', apps_path %>
+        <%= link_to 'Connections', connections_path %>
+    </div>
+    
     <%= yield %>
   </body>
 </html>

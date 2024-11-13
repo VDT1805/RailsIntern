@@ -21,17 +21,27 @@ RSpec.describe "/apps", type: :request do
         name: "Datadog Test"
     }
   }
+    # Use `let` to lazily create the organization and user
+    let(:org) { Org.create!(name: "Company A") }
+    let(:user) { org.users.create!(email_address: "test1@example.com", password: "123") }
+  
+    # Before each test, authenticate the user
+    before(:each) do
+      post session_url, params: { email_address: user.email_address, password: user.password }
+    end
+
+
 
   describe "GET /index" do
     it "renders a successful response" do
       App.create! valid_attributes
-      get org_apps_url(org_id: 1)
+      get apps_url
       expect(response).to be_successful
     end
 
     it "returns app with Datadog Test name" do
       App.create! valid_attributes
-      get org_apps_url(org_id: 1)
+      get apps_url
       expect(response).to have_http_status(:success)
       expect(response.body).to include("Datadog Test")
     end

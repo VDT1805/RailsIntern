@@ -3,11 +3,9 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   get "dashboard", to: "home#dashboard"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :orgs, only: [] do
-    resources :connections, only: [ :index, :show ]
-    resources :apps, only: [ :index ] do
+  resources :connections, only: [ :index, :show ]
+  resources :apps, only: [ :index ] do
       resources :connections, only: [ :new, :create ]
-    end
   end
   mount MissionControl::Jobs::Engine, at: "/jobs"
 

@@ -1,6 +1,6 @@
 class ConnectionsController < ApplicationController
   def index
-    @org = Org.find(params[:org_id])
+    @org = Current.user.org
     @connections = @org.connections
   end
   def show
@@ -9,7 +9,7 @@ class ConnectionsController < ApplicationController
   end
   def new
     @app = App.find(params[:app_id])
-    @org = Org.find(params[:org_id])
+    @org = Current.user.org
     @conn = Connection.new
     @cred = @conn.build_cred
     case @app.name
@@ -22,10 +22,10 @@ class ConnectionsController < ApplicationController
 
   def create
     @app = App.find(params[:app_id])
-    @org = Org.find(params[:org_id])
+    @org = Current.user.org
     @conn = Connection.new(connection_params)
     if @conn.save
-      redirect_to org_connection_path(id: @conn.id)
+      redirect_to connection_path(id: @conn.id)
     else
       render :new, status: :unprocessable_entity
     end
