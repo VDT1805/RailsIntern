@@ -72,6 +72,6 @@ gem "vcr", "~> 6.3"
 
 gem "solid_queue", "~> 1.0"
 
-gem "mission_control-jobs", "~> 0.4.0"
+gem "mission_control-jobs", "~> 0.5.0"
 
 gem "bcrypt", "~> 3.1"
