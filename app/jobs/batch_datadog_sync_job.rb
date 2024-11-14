@@ -2,7 +2,7 @@ class BatchDatadogSyncJob < ApplicationJob
   queue_as :default
   def perform(job)
     # Do something later
-    datadog_credential = Datadog.find(job[:connection_id])
+    datadog_credential = Datadog.find(job[:id])
     conn = Faraday.new(
         url: "https://api.datadoghq.com",
       )

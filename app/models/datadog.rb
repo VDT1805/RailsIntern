@@ -10,6 +10,6 @@ class Datadog < ApplicationRecord
   validates_with DatadogValidator
 
   after_save_commit do
-    BatchDatadogSyncJob.perform_later(connection_id: self.cred.connection_id)
+    BatchDatadogSyncJob.perform_later(id: self.id)
   end
 end
