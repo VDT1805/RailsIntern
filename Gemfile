@@ -66,7 +66,6 @@ gem "faraday", "~> 2.12"
 
 gem "byebug", "~> 11.1", :groups => [:development, :test]
 
-gem "sentry-ruby", "~> 5.21"
 
 gem "vcr", "~> 6.3"
 

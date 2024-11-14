@@ -22,7 +22,7 @@ class DatadogSyncJob < ApplicationJob
                 status: acc["attributes"]["status"]
               }
             end
-            Account.insert_all(account_attributes)
+            Account.upsert_all(account_attributes)
       else
           raise StandardError, "Datadog API request failed with status: #{response.status} and body: #{response.body}"
       end

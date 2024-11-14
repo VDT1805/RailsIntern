@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_11_063801) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_14_032007) do
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -79,13 +79,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_063801) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sendgrids", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "subuser"
-    t.string "api_key"
+  create_table "sentries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "organization_id"
+    t.string "api_token"
     t.bigint "cred_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cred_id"], name: "index_sendgrids_on_cred_id"
+    t.index ["cred_id"], name: "index_sentries_on_cred_id"
   end
 
   create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -116,7 +116,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_063801) do
   add_foreign_key "creds", "connections"
   add_foreign_key "datadogs", "creds"
   add_foreign_key "employees", "orgs"
-  add_foreign_key "sendgrids", "creds"
+  add_foreign_key "sentries", "creds"
   add_foreign_key "sessions", "users"
   add_foreign_key "users", "orgs"
 end

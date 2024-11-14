@@ -1,0 +1,6 @@
+<%= cred_fields.fields_for :sentry do |sentry_fields| %>
+  <%= sentry_fields.label :api_token, "API Token" %>  
+  <%= sentry_fields.text_field :api_token %>
+  <%= sentry_fields.label :organization_id, "Organization ID" %>  
+  <%= sentry_fields.text_field :organization_id %>
+<% end %>

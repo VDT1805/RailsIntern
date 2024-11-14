@@ -15,8 +15,8 @@ class ConnectionsController < ApplicationController
     case @app.name
     when "Datadog"
       @cred.build_datadog
-    when "Sendgrid"
-      @cred.build_sendgrid
+    when "Sentry"
+      @cred.build_sentry
     end
   end
 
@@ -39,7 +39,7 @@ class ConnectionsController < ApplicationController
       cred_attributes: [
         :label,
         datadog_attributes: [ :api_key, :application_key, :subdomain ],
-        sendgrid_attributes: [ :api_key, :subuser ]
+        sentry_attributes: [ :api_token, :organization_id ]
         ]
     )
   end
