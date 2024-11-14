@@ -20,8 +20,8 @@
       <div class="dynamic-fields">
         <% if @app.name == 'Datadog' %>
           <%= render 'shared/datadog_fields', cred_fields: cred_fields %>
-        <% elsif @app.name == 'Sendgrid' %>
-          <%= render 'shared/sendgrid_fields', cred_fields: cred_fields %>
+        <% elsif @app.name == 'Sentry' %>
+          <%= render 'shared/sentry_fields', cred_fields: cred_fields %>
         <% end %>
       </div>
     </div>
