@@ -3,4 +3,6 @@ class Sentry < ApplicationRecord
   validates :organization_id, presence: true
   validates :api_token, presence: true
   belongs_to :cred
+
+  validates_with SentryValidator
 end
