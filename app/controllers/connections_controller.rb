@@ -17,6 +17,8 @@ class ConnectionsController < ApplicationController
       @cred.build_datadog
     when "Sentry"
       @cred.build_sentry
+    when "Dropbox"
+      @cred.build_dropbox
     end
   end
 
@@ -39,7 +41,8 @@ class ConnectionsController < ApplicationController
       cred_attributes: [
         :label,
         datadog_attributes: [ :api_key, :application_key, :subdomain ],
-        sentry_attributes: [ :api_token, :organization_id ]
+        sentry_attributes: [ :api_token, :organization_id ],
+        dropbox_attributes: [ :refresh_token ]
         ]
     )
   end

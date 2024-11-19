@@ -15,17 +15,23 @@
   <%= f.hidden_field :org_id, value: @org.id  %>
   <%= f.fields_for :cred do |cred_fields| %>
     <div class="cred">
+      <% unless @app.name == 'Dropbox' %> 
       <%= cred_fields.label :label %>  
       <%= cred_fields.text_field :label %>  
+      <% end %>
       <div class="dynamic-fields">
         <% if @app.name == 'Datadog' %>
           <%= render 'shared/datadog_fields', cred_fields: cred_fields %>
         <% elsif @app.name == 'Sentry' %>
           <%= render 'shared/sentry_fields', cred_fields: cred_fields %>
+        <% elsif @app.name == 'Dropbox' %>
+          <%= render 'shared/dropbox_fields', cred_fields: cred_fields %>
         <% end %>
       </div>
     </div>
   <% end %>
   
-  <%= f.submit %>
+  <% unless @app.name == 'Dropbox' %> 
+    <%= f.submit %>
+  <% end %>
 <% end %>

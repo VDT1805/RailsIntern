@@ -12,6 +12,7 @@
 puts "Start seeding"
 App.find_or_create_by!(name: 'Datadog')
 App.find_or_create_by!(name: 'Sentry')
+App.find_or_create_by!(name: 'Dropbox')
 Org.find_or_create_by!(name: "Company A").users.find_or_create_by!(email_address: "test@example.com") do |user|
   user.password = "123"
 end
