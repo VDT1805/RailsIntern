@@ -34,6 +34,18 @@ VCR.configure do |c|
   c.filter_sensitive_data('<Bearer token>') do |interaction|
     interaction.request.headers['Authorization']&.first
   end
+
+  c.filter_sensitive_data('<DROPBOX APP ID>') do |interaction|
+    Rails.application.credentials.dig(:dropbox, :app_id)
+  end
+
+  c.filter_sensitive_data('<DROPBOX APP SECRET>') do |interaction|
+    Rails.application.credentials.dig(:dropbox, :app_secret)
+  end
+
+  c.filter_sensitive_data('<DROPBOX REFRESH TOKEN>') do |interaction|
+    Rails.application.credentials.dig(:dropbox, :refresh_token)
+  end
 end
 
 RSpec.configure do |config|

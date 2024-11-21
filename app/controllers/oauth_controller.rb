@@ -15,6 +15,7 @@ class OauthController < ApplicationController
       }
       response = conn.post do |req|
           req.url "/oauth2/token"
+          req.headers["Content-Type"] = "application/x-www-form-urlencoded"
           req.body = URI.encode_www_form(form_data)
       end
       if response.status == 200
