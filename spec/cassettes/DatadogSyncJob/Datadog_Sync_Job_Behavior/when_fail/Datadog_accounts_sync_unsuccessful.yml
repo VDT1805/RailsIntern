@@ -23,7 +23,7 @@ http_interactions:
       message: Forbidden
     headers:
       date:
-      - Thu, 07 Nov 2024 02:08:58 GMT
+      - Tue, 26 Nov 2024 09:59:47 GMT
       content-type:
       - application/json
       content-length:
@@ -37,5 +37,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"errors":["Forbidden"]}'
-  recorded_at: Thu, 07 Nov 2024 02:08:58 GMT
+  recorded_at: Tue, 26 Nov 2024 09:59:47 GMT
 recorded_with: VCR 6.3.1

@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Thu, 07 Nov 2024 02:08:57 GMT
+      - Tue, 26 Nov 2024 09:59:44 GMT
       content-type:
       - application/json
       transfer-encoding:
@@ -48,5 +48,54 @@ http_interactions:
         \u512a\u6a39","handle":"a@aaaa.com","created_at":"2023-02-15T10:45:04.560328+00:00","modified_at":"2023-03-03T04:42:20.630548+00:00","email":"a@aaaa.com","icon":"https://secure.gravatar.com/avatar/0e4a3d30a4797cd4a11a110181d20dae?s=48&d=retro","title":"","verified":false,"service_account":false,"disabled":true,"allowed_login_methods":[],"status":"Disabled","mfa_enabled":false},"relationships":{"roles":{"data":[]},"org":{"data":{"type":"orgs","id":"59c9fe3c-30ab-11ec-922a-da7ad0900002"}}}}],"meta":{"page":{"total_count":161,"total_filtered_count":161,"max_page_size":1000}}}
 
         '
-  recorded_at: Thu, 07 Nov 2024 02:08:57 GMT
+  recorded_at: Tue, 26 Nov 2024 09:59:45 GMT
+- request:
+    method: get
+    uri: https://api.datadoghq.com/api/v2/users?page%5Bnumber%5D=0&page%5Bsize%5D=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.0
+      Content-Type:
+      - application/json
+      DD_API_KEY:
+      - "<DATADOG_API_KEY>"
+      DD_APPLICATION_KEY:
+      - "<DATADOG_APP_KEY>"
+      DD_SITE:
+      - datadoghq.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 26 Nov 2024 09:59:46 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      x-frame-options:
+      - SAMEORIGIN
+      content-security-policy:
+      - frame-ancestors 'self'; report-uri https://logs.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pube4f163c23bbf91c16b8f57f56af9fc58&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=site%3Adatadoghq.com
+      vary:
+      - Accept-Encoding
+      content-encoding:
+      - gzip
+      x-content-type-options:
+      - nosniff
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"users","id":"ce53988d-ad1d-11ed-b613-4284af52a2d6","attributes":{"name":"\u7530\u4e2d
+        \u512a\u6a39","handle":"a@aaaa.com","created_at":"2023-02-15T10:45:04.560328+00:00","modified_at":"2023-03-03T04:42:20.630548+00:00","email":"a@aaaa.com","icon":"https://secure.gravatar.com/avatar/0e4a3d30a4797cd4a11a110181d20dae?s=48&d=retro","title":"","verified":false,"service_account":false,"disabled":true,"allowed_login_methods":[],"status":"Disabled","mfa_enabled":false},"relationships":{"roles":{"data":[]},"org":{"data":{"type":"orgs","id":"59c9fe3c-30ab-11ec-922a-da7ad0900002"}}}}],"meta":{"page":{"total_count":161,"total_filtered_count":161,"max_page_size":1000}}}
+
+        '
+  recorded_at: Tue, 26 Nov 2024 09:59:46 GMT
 recorded_with: VCR 6.3.1

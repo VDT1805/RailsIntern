@@ -1,6 +1,6 @@
 class Datadog < ApplicationRecord
-  belongs_to :cred
-
+  include Credable
+  
   encrypts :api_key, :application_key
 
   validates :api_key, presence: true

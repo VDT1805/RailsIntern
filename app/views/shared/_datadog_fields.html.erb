@@ -1,8 +1,32 @@
-<%= cred_fields.fields_for :datadog do |datadog_fields| %>
-  <%= datadog_fields.label :api_key, "API Key" %>  
-  <%= datadog_fields.text_field :api_key %>
-  <%= datadog_fields.label :application_key, "Application Key" %>  
-  <%= datadog_fields.text_field :application_key %>
-  <%= datadog_fields.label :subdomain, "Subdomain" %>  
-  <%= datadog_fields.text_field :subdomain %>
+
+
+<%= form_with(model: [@app,@conn]) do |f| %>
+  <h3>Connecting to <%= @app.name %></h3>
+  <% if @conn.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@conn.errors.count, "error") %> prohibited this connection from being saved:</h2>
+      <ul>
+        <% @conn.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.fields_for :cred do |cred_fields| %>
+    <div class="cred">
+          <%= cred_fields.label :label %>  
+          <%= cred_fields.text_field :label %>  
+          <%= cred_fields.fields_for :credable do |datadog_fields| %>
+            <%= datadog_fields.label :api_key, "API Key" %>  
+            <%= datadog_fields.text_field :api_key %>
+            <%= datadog_fields.label :application_key, "Application Key" %>  
+            <%= datadog_fields.text_field :application_key %>
+            <%= datadog_fields.label :subdomain, "Subdomain" %>  
+            <%= datadog_fields.text_field :subdomain %>
+      <% end %>
+    </div>
+  <% end %>
+  
+    <%= f.submit %>
 <% end %>

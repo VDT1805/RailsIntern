@@ -7,42 +7,40 @@ class ConnectionsController < ApplicationController
     @conn = Connection.find(params[:id])
     @app = @conn.app
   end
+
   def new
     @app = App.find(params[:app_id])
     @org = Current.user.org
-    @conn = Connection.new
-    @cred = @conn.build_cred
-    case @app.name
-    when "Datadog"
-      @cred.build_datadog
-    when "Sentry"
-      @cred.build_sentry
-    when "Dropbox"
-      @cred.build_dropbox
-    end
+    @conn = Connection.new(org: @org, app: @app)
+    @conn.build_credable
   end
 
   def create
     @app = App.find(params[:app_id])
     @org = Current.user.org
-    @conn = Connection.new(connection_params)
+    @conn = Connection.new(org: @org, app: @app)
+    @conn.build_credable(connection_params)
     if @conn.save
-      redirect_to connection_path(id: @conn.id)
+      redirect_to connection_path(id: @conn)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   private
+
+
+
   def connection_params
     params.require(:connection).permit(
-      :app_id,
-      :org_id,
-      cred_attributes: [
-        :label,
-        datadog_attributes: [ :api_key, :application_key, :subdomain ],
-        sentry_attributes: [ :api_token, :organization_id ],
-        dropbox_attributes: [ :refresh_token ]
+        cred_attributes: [
+          :label,
+          credable_attributes: [
+            # Add all possible delegated type attributes here
+            :api_key, :application_key, :subdomain, # Datadog
+            :api_token, :organization_id,          # Sentry
+            :refresh_token                        # Dropbox
+          ]
         ]
     )
   end
