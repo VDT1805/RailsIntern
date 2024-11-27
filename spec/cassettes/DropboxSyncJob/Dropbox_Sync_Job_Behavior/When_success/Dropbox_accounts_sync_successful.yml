@@ -1,0 +1,459 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.dropbox.com/oauth2/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=refresh_token&refresh_token=<DROPBOX REFRESH TOKEN>&client_id=e9cehyndwubggjp&client_secret=<DROPBOX
+        APP SECRET>
+    headers:
+      User-Agent:
+      - Faraday v2.12.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      cache-control:
+      - no-cache, no-store, must-revalidate
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-server-response-time:
+      - '46'
+      date:
+      - Thu, 21 Nov 2024 07:21:49 GMT
+      server:
+      - envoy
+      content-encoding:
+      - gzip
+      vary:
+      - Accept-Encoding
+      x-dropbox-response-origin:
+      - far_remote
+      x-dropbox-request-id:
+      - dc0a2756a26144f08120d02eeea49cca
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token": "",
+        "token_type": "bearer", "expires_in": 14400}'
+  recorded_at: Thu, 21 Nov 2024 07:21:49 GMT
+- request:
+    method: post
+    uri: https://api.dropbox.com/2/team/members/list_v2
+    body:
+      encoding: UTF-8
+      string: '{"include_removed":true,"limit":20}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.0
+      Authorization:
+      - "<Bearer token>"
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      cache-control:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-server-response-time:
+      - '164'
+      date:
+      - Thu, 21 Nov 2024 07:21:49 GMT
+      server:
+      - envoy
+      x-dropbox-trace-id:
+      - 0d1e596de3354eaab056a421dd402e15
+      content-encoding:
+      - gzip
+      vary:
+      - Accept-Encoding
+      x-dropbox-response-origin:
+      - far_remote
+      x-dropbox-request-id:
+      - 0d1e596de3354eaab056a421dd402e15
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"members": [{"profile": {"team_member_id": "dbmid:AAC2REWQKVNKvhiOTxYSdvz2HPeBkAouPB4",
+        "account_id": "dbid:AAD9ZVPsmpnqgagXbNTMy4dIvREiYDKmqeg", "email": "abhijith.s@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "abhijith", "surname": "s", "familiar_name": "abhijith", "display_name": "abhijith
+        s", "abbreviated_name": "AS"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2023-12-14T13:25:52Z", "groups": [], "member_folder_id": "1798199347", "root_folder_id":
+        "1798199347"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAAc89uU8RxxTfNzRoU4-wVUiLln8cPFtFU",
+        "account_id": "dbid:AABHcXsW6A0lXw11eGhCrCAvoN0DBanM_9g", "email": "testsilverstone@gmail.com",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Tom", "surname": "Silverstone", "familiar_name": "Tom", "display_name": "Tom
+        Silverstone", "abbreviated_name": "TS"}, "membership_type": {".tag": "full"},
+        "joined_on": "2024-04-16T08:40:46Z", "groups": [], "member_folder_id": "2528506403",
+        "root_folder_id": "2528506403"}}, {"profile": {"team_member_id": "dbmid:AADQvGYyBoFa3YR48LlvLhSFyDtEDwpMPRI",
+        "account_id": "dbid:AABU85yu1FI_5KGfw_MERU6UpLSTpAVYCww", "email": "neeraj.kumar@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "test-t", "surname": "Neeraj", "familiar_name": "test-t", "display_name":
+        "test-t Neeraj", "abbreviated_name": "TN"}, "membership_type": {".tag": "full"},
+        "joined_on": "2024-04-22T15:14:04Z", "groups": [], "member_folder_id": "2574362547",
+        "root_folder_id": "2574362547"}}, {"profile": {"team_member_id": "dbmid:AADlP4BPF5Mv15Z9XrScH3XNW5zCla3L7Nk",
+        "account_id": "dbid:AAA8Pc5JhvDFhOZ_JjIS44WPfDN2yhqtnCM", "email": "megha.raghu@demojosys.com",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "raghu", "surname": "megha", "familiar_name": "raghu", "display_name": "raghu
+        megha", "abbreviated_name": "RM"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-04-24T10:40:30Z", "groups": [], "member_folder_id": "2589385187", "root_folder_id":
+        "2589385187"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAAUlRtYYnwCr9hGvwq9wzzrtT378BhTvuk",
+        "account_id": "dbid:AABYMHeh8BIPkzi1RpwgpOwIJjZWyLgZHLo", "email": "dung.nd+accepted@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "nguyen", "surname": "dung", "familiar_name": "nguyen", "display_name": "nguyen
+        dung", "abbreviated_name": "ND"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-17T06:46:29Z", "groups": [], "member_folder_id": "3191689731", "root_folder_id":
+        "3191689731"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAA9pNpYOgsw_wfMzzAjZYqsLLoDEEDajBA",
+        "account_id": "dbid:AABs9OgBxwmdPqu9_dgCMoA1HkVvE0pUPew", "email": "dung.nd+accepted4@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "nguyen", "surname": "dung", "familiar_name": "nguyen", "display_name": "nguyen
+        dung", "abbreviated_name": "ND"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-17T07:31:42Z", "groups": [], "member_folder_id": "3198602531", "root_folder_id":
+        "3198602531"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAC2Yf_tmcOApFoyX9Z2vnYtDVDbhiYp8E4",
+        "account_id": "dbid:AAD5jOTSif-oTXt-QjMDlD2YkZLAW4oFmnw", "email": "vy.nlt+2@josys.com",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Vy", "surname": "Nguyen super Admin", "familiar_name": "Vy", "display_name":
+        "Vy Nguyen super Admin", "abbreviated_name": "VA"}, "membership_type": {".tag":
+        "full"}, "joined_on": "2024-06-18T03:03:21Z", "groups": [], "member_folder_id":
+        "3203887891", "root_folder_id": "3203887891"}}, {"profile": {"team_member_id":
+        "dbmid:AACV7GrbRpLFaHFglPpnb8_oSyL4GPuIY8A", "account_id": "dbid:AACtKlyhz9RGbrb5mKw19LyimpQ5Wa5NU4A",
+        "email": "shaik.ameed@taskel.it", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "test", "surname": "Ameed", "familiar_name":
+        "test", "display_name": "test Ameed", "abbreviated_name": "TA"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-18T05:33:07Z", "groups": [], "member_folder_id":
+        "3196727107", "root_folder_id": "3196727107"}}, {"profile": {"team_member_id":
+        "dbmid:AACrdswDnGf6NQZqtaOCtYiN_uxlPpIXAuc", "account_id": "dbid:AADN7iDIk6lOEAzMh21rnrVGC1-j4erXJPg",
+        "email": "vy.nlt+123@josys.com", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "Admin", "surname": "Vy", "familiar_name":
+        "Admin", "display_name": "Admin Vy", "abbreviated_name": "AV"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-18T07:10:29Z", "groups": [], "member_folder_id":
+        "3196985667", "root_folder_id": "3196985667"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAAS33-ewO6bWX5rLpdg2UBIlFkRwe6jf24",
+        "account_id": "dbid:AAAHZDQnpwRMazXOftIGB5DIIU-yeQ588HM", "email": "shaik.ameed@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "test", "surname": "Ameed", "familiar_name": "test", "display_name": "test
+        Ameed", "abbreviated_name": "TA"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-18T05:30:07Z", "groups": [], "member_folder_id": "3196717507", "root_folder_id":
+        "3196717507"}}, {"profile": {"team_member_id": "dbmid:AACaFbVIX5ZVSPYUp_mZ8RutGU-q5WULcaA",
+        "account_id": "dbid:AAA5kne0km2EW8U592-Ita97T-m6ogyWBCI", "email": "automationtest.308476027@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Jamar", "surname": "Price", "familiar_name": "Jamar", "display_name": "Jamar
+        Price", "abbreviated_name": "JP"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-19T04:39:51Z", "groups": [], "member_folder_id": "3208621987", "root_folder_id":
+        "3208621987"}}, {"profile": {"team_member_id": "dbmid:AAAiMy5NPMsMddtOBNsf8P9wynXlaZhXo9o",
+        "account_id": "dbid:AACh6-mshG0pRW2yKNIEz1k9gp0yi7pZMOU", "email": "vy.nlt+123@josys.com",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Admin", "surname": "Vy", "familiar_name": "Admin", "display_name": "Admin
+        Vy", "abbreviated_name": "AV"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-18T10:33:07Z", "groups": [], "member_folder_id": "3204450979", "root_folder_id":
+        "3204450979"}}, {"profile": {"team_member_id": "dbmid:AAB4yQbV0hJ1_ni0U2aMDiETgh9X2JGw35A",
+        "account_id": "dbid:AADr_f0KAcG9i88uuL26nHTmZKGSPBwu65M", "email": "shaik.ameed@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "test", "surname": "Ameed", "familiar_name": "test", "display_name": "test
+        Ameed", "abbreviated_name": "TA"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-19T06:38:29Z", "groups": [], "member_folder_id": "3202059459", "root_folder_id":
+        "3202059459"}}, {"profile": {"team_member_id": "dbmid:AADg7ekls9qyGQs5LqmXfyl9SWWhhMY_Eoo",
+        "account_id": "dbid:AADWS4VgB8CN5JRvyGiRryifqgRzUr9FQC4", "email": "automationtest.308476027@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Jamar", "surname": "Price", "familiar_name": "Jamar", "display_name": "Jamar
+        Price", "abbreviated_name": "JP"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-19T04:39:05Z", "groups": [], "member_folder_id": "3226459827", "root_folder_id":
+        "3226459827"}}, {"profile": {"team_member_id": "dbmid:AABW6sdrInG9JQ8tnQJRLVghIizynviVAUo",
+        "account_id": "dbid:AAAAIlnPmTGvGU0iFaxORRbnWUxtzgcFQaM", "email": "vy.nlt@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Vy", "surname": "Nguyen", "familiar_name": "Vy", "display_name": "Vy Nguyen",
+        "abbreviated_name": "VN"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-20T03:41:20Z", "groups": [], "member_folder_id": "3214366611", "root_folder_id":
+        "3214366611"}}, {"profile": {"team_member_id": "dbmid:AAAD7vM_pB3XMp_oNktCiq1R5oH2D4JLtvE",
+        "account_id": "dbid:AACOMrJkuKAUMORGWZE0ypphZqmw8VI6UdQ", "email": "vishunu.k@josys.com",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Vushnu", "surname": "K", "familiar_name": "Vushnu", "display_name": "Vushnu
+        K", "abbreviated_name": "VK"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-19T10:12:14Z", "groups": [], "member_folder_id": "3210248147", "root_folder_id":
+        "3210248147"}}, {"profile": {"team_member_id": "dbmid:AABYu_XyTYL0pIKwGTOikG8Cu7zQkW3d31E",
+        "account_id": "dbid:AABpNxjjiMQP5MXkymBd_5GzSx7w-I9iH7k", "email": "shaik.ameed@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "test", "surname": "Ameed", "familiar_name": "test", "display_name": "test
+        Ameed", "abbreviated_name": "TA"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-20T03:39:52Z", "groups": [], "member_folder_id": "3214362963", "root_folder_id":
+        "3214362963"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AABEduqy283R3PVD4WMlovfiOHxceuCOWSc",
+        "account_id": "dbid:AACYKOqy5OthSzmYR3AtIDaA9DzNvyFvLJI", "email": "t.fujitatest@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "a", "surname": "\u690d\u677e", "familiar_name": "a", "display_name": "a \u690d\u677e",
+        "abbreviated_name": "A\u690d"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-19T11:04:50Z", "groups": [], "member_folder_id": "3210415315", "root_folder_id":
+        "3210415315"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAC5iDAaKgLcVZX2mNwjzaT71Rk25cTYa_k",
+        "account_id": "dbid:AACur-mockBE7PhdH0K4ii7HjbyeDvc1Guk", "email": "e2e-freeplan-tester@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "e2e-freeplan-tester", "surname": "TESTER", "familiar_name": "e2e-freeplan-tester",
+        "display_name": "e2e-freeplan-tester TESTER", "abbreviated_name": "ET"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-20T05:04:08Z", "groups": [], "member_folder_id":
+        "3214544915", "root_folder_id": "3214544915"}}, {"profile": {"team_member_id":
+        "dbmid:AABvLu6QuDcyztlTXv1mH8MJ9Md8FB-gcws", "account_id": "dbid:AABNbvdJ9ul0tbwwcTUAelhbh8tUi-j4bRw",
+        "email": "test.qa@josys.com", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "test", "surname": "qa", "familiar_name": "test",
+        "display_name": "test qa", "abbreviated_name": "TQ"}, "membership_type": {".tag":
+        "full"}, "joined_on": "2024-06-20T08:46:57Z", "groups": [], "member_folder_id":
+        "3208378179", "root_folder_id": "3208378179"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]}],
+        "cursor": "AACUksFh4kG23BUY_B-eUDN5A7iITqWAErWHnKgk7oNGL69BnfeMEvbVgi5B2L8zm0X4ImF5vcO5NbCGtsWR2hEg6oAdUsujuWzdfJgCYYUqZg",
+        "has_more": true}'
+  recorded_at: Thu, 21 Nov 2024 07:21:50 GMT
+- request:
+    method: post
+    uri: https://api.dropboxapi.com/2/team/members/list/continue_v2
+    body:
+      encoding: UTF-8
+      string: '{"cursor":"AACUksFh4kG23BUY_B-eUDN5A7iITqWAErWHnKgk7oNGL69BnfeMEvbVgi5B2L8zm0X4ImF5vcO5NbCGtsWR2hEg6oAdUsujuWzdfJgCYYUqZg"}'
+    headers:
+      User-Agent:
+      - Faraday v2.12.0
+      Authorization:
+      - "<Bearer token>"
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json
+      cache-control:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-server-response-time:
+      - '157'
+      date:
+      - Thu, 21 Nov 2024 07:21:50 GMT
+      server:
+      - envoy
+      content-encoding:
+      - gzip
+      vary:
+      - Accept-Encoding
+      x-dropbox-response-origin:
+      - far_remote
+      x-dropbox-request-id:
+      - b8ede6d62d174130a097af195ec7e402
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"members": [{"profile": {"team_member_id": "dbmid:AACJYsyZtYxCOjNAQNFDaDeGbECDfyHtWCE",
+        "account_id": "dbid:AAD0E2S_tMdYQXuBPQzBR3E2t3T2eknZQkc", "email": "nilesh3@josys.com",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Nilesh", "surname": "Sharma", "familiar_name": "Nilesh", "display_name":
+        "Nilesh Sharma", "abbreviated_name": "NS"}, "membership_type": {".tag": "full"},
+        "joined_on": "2024-06-20T14:38:41Z", "groups": [], "member_folder_id": "3234386291",
+        "root_folder_id": "3234386291"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AACTx8838gDBhbsC0FybZuAXj2wTSdOzu-I",
+        "account_id": "dbid:AAAzdilLkqNfi01JHUq5KhGI7jTRODtyv3o", "email": "nam.nln20@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "20", "surname": "nam", "familiar_name": "20", "display_name": "20 nam", "abbreviated_name":
+        "2N"}, "membership_type": {".tag": "full"}, "joined_on": "2024-06-24T10:25:42Z",
+        "groups": [], "member_folder_id": "3257719731", "root_folder_id": "3257719731"}},
+        {"profile": {"team_member_id": "dbmid:AADomUiv0J-12kGnB7RzJm8F3NHGvyHr6IU",
+        "account_id": "dbid:AABKJA7_6bUM11Y_qOUC0vriKaAt_BXE6vY", "email": "vynguyen@demojosys.com",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Vy", "surname": "Nguyen", "familiar_name": "Vy", "display_name": "Vy Nguyen",
+        "abbreviated_name": "VN"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-24T04:10:35Z", "groups": [], "member_folder_id": "3229688451", "root_folder_id":
+        "3229688451"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAAwgLafXzT6zMrIBdts_em8Lo5e4LU-tfs",
+        "account_id": "dbid:AAAbrP2jw-wIqBRocYtyP5sczb59-4d-uJI", "email": "nam.nln22@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "22", "surname": "nam", "familiar_name": "22", "display_name": "22 nam", "abbreviated_name":
+        "2N"}, "membership_type": {".tag": "full"}, "joined_on": "2024-06-24T10:28:34Z",
+        "groups": [], "member_folder_id": "3257730035", "root_folder_id": "3257730035"}},
+        {"profile": {"team_member_id": "dbmid:AAD6pQYWhaaQxHvZdhB88ZjezZD_p7qxys4",
+        "account_id": "dbid:AABQiztHLBexf0MqeMIwwXpQFCwE0Km6fJg", "email": "nam.nln25@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "25", "surname": "nam", "familiar_name": "25", "display_name": "25 nam", "abbreviated_name":
+        "2N"}, "membership_type": {".tag": "full"}, "joined_on": "2024-06-24T10:28:59Z",
+        "groups": [], "member_folder_id": "3240550867", "root_folder_id": "3240550867"},
+        "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AACCQwvKoWN-JZCQGlEICEd07P-55p0T2Zw",
+        "account_id": "dbid:AABF4rpjV9YeTzU-jBwsquoYAaStu9bbsyY", "email": "amal@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "test", "surname": "test", "familiar_name": "test", "display_name": "test
+        test", "abbreviated_name": "TT"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-25T06:37:19Z", "groups": [], "member_folder_id": "3245592211", "root_folder_id":
+        "3245592211"}}, {"profile": {"team_member_id": "dbmid:AACuHeUTiFFZxI_5MYXy0hb0cd5tynnNCXA",
+        "account_id": "dbid:AACq_JJAFp0BGFzheLWoibm6OqbHANb45_s", "email": "first@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "first", "surname": "Last", "familiar_name": "first", "display_name": "first
+        Last", "abbreviated_name": "FL"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-25T06:55:14Z", "groups": [], "member_folder_id": "3238208003", "root_folder_id":
+        "3238208003"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AABESnbsEH8fAL42u0JBR-MGrd4LH79BnP0",
+        "account_id": "dbid:AAANAZ55-6o97Q6bixjyeIukc8jXFQhFaf4", "email": "mb@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "", "surname": "", "familiar_name": "", "display_name": "", "abbreviated_name":
+        ""}, "membership_type": {".tag": "full"}, "joined_on": "2024-07-10T14:59:10Z",
+        "groups": [], "member_folder_id": "3342163571", "root_folder_id": "3342163571"},
+        "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAAHRfh4V6y44mezKs62TWAPEoY4H6Je6io",
+        "account_id": "dbid:AADUED3bfp2D_DaNOrpl1kb1zcHD-VPfu-k", "email": "shaik.ameed@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "test", "surname": "Ameed", "familiar_name": "test", "display_name": "test
+        Ameed", "abbreviated_name": "TA"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-07-17T13:21:38Z", "groups": [], "member_folder_id": "3373738611", "root_folder_id":
+        "3373738611"}}, {"profile": {"team_member_id": "dbmid:AAAC6Jc5Umqvq6Lq3871LR063524rUZkYMk",
+        "account_id": "dbid:AAAUasz0aHNq8qPhh397B-jWdkBYWekaM4c", "email": "pratyush.choudhury@josys.com",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "Pratyush", "surname": "Choudhury", "familiar_name": "Pratyush", "display_name":
+        "Pratyush Choudhury", "abbreviated_name": "PC"}, "membership_type": {".tag":
+        "full"}, "joined_on": "2024-07-22T11:29:53Z", "groups": [], "member_folder_id":
+        "3370913347", "root_folder_id": "3370913347"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AACSLwAp57PYlS66W9GBFJk4b8htkfr_gPw",
+        "account_id": "dbid:AAB__fxBGWAzMDTI7zK3GqPFtBhkS9G2vmk", "email": "view1@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "view firs 1", "surname": "View last2", "familiar_name": "view firs 1", "display_name":
+        "view firs 1 View last2", "abbreviated_name": "VL"}, "membership_type": {".tag":
+        "full"}, "joined_on": "2024-07-23T06:03:05Z", "groups": [], "member_folder_id":
+        "3382237347", "root_folder_id": "3382237347"}}, {"profile": {"team_member_id":
+        "dbmid:AABIeUutWuiy2WATp2FAnBuUzkKhVDNDO9s", "account_id": "dbid:AABq0_r602cj4iu0z_OBMSJwawh4V77kTk0",
+        "email": "first@taskel.it", "email_verified": false, "secondary_emails": [],
+        "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "first", "surname": "Last", "familiar_name":
+        "first", "display_name": "first Last", "abbreviated_name": "FL"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-07-29T06:51:37Z", "groups": [], "member_folder_id":
+        "3426745331", "root_folder_id": "3426745331"}}, {"profile": {"team_member_id":
+        "dbmid:AACKuaERrQdjeXVfJvWGQQRN0aemA8CAM4M", "account_id": "dbid:AACINoMveEIovv34ZwFJq8UdaOMFfYEKevU",
+        "email": "dung.nd+12@josys.com", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "nguyen", "surname": "dung", "familiar_name":
+        "nguyen", "display_name": "nguyen dung", "abbreviated_name": "ND"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-10T03:50:50Z", "groups": [], "member_folder_id":
+        "5057510193", "root_folder_id": "5057510193"}}, {"profile": {"team_member_id":
+        "dbmid:AACC_GyQPZC6K3hOONcu_W2aAV324xNPlPI", "account_id": "dbid:AABYpZAfUS0uTraw7_6lr-T0QS9_rfIT1x4",
+        "email": "shaik.ameed@taskel.it", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "test", "surname": "Ameed", "familiar_name":
+        "test", "display_name": "test Ameed", "abbreviated_name": "TA"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-10T04:15:22Z", "groups": [], "member_folder_id":
+        "5057561073", "root_folder_id": "5057561073"}}, {"profile": {"team_member_id":
+        "dbmid:AAA6puzuC_DEdIOI3bQeeWpYr_XU0OtygR8", "account_id": "dbid:AAD3SCEmJdIIvVkbQrhVqv7D5i_eqp_URQA",
+        "email": "dung.nd+14@josys.com", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "nguyen", "surname": "dung", "familiar_name":
+        "nguyen", "display_name": "nguyen dung", "abbreviated_name": "ND"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-10T04:38:15Z", "groups": [], "member_folder_id":
+        "5057760289", "root_folder_id": "5057760289"}}, {"profile": {"team_member_id":
+        "dbmid:AADmIa5dNddujQ4WF6r06R_aa10Tn7p83tI", "account_id": "dbid:AAAldfRa_VUDJzeAWPOqdw0DW2gBBKqXO7M",
+        "email": "shaik.ameed@taskel.it", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "test", "surname": "Ameed", "familiar_name":
+        "test", "display_name": "test Ameed", "abbreviated_name": "TA"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-10T03:57:50Z", "groups": [], "member_folder_id":
+        "5057383889", "root_folder_id": "5057383889"}}, {"profile": {"team_member_id":
+        "dbmid:AADgGUSzmd1-MyPp4gLvkrSL1Mu4RcEc4fs", "account_id": "dbid:AAAlxg6kOCO9gAm_dJVOVUkKXrixkMXCzdE",
+        "email": "shaik.ameed@taskel.it", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "test", "surname": "Ameed", "familiar_name":
+        "test", "display_name": "test Ameed", "abbreviated_name": "TA"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-11T14:29:29Z", "groups": [], "member_folder_id":
+        "5066211857", "root_folder_id": "5066211857"}}, {"profile": {"team_member_id":
+        "dbmid:AADZPRs3b6TOdOf7hCA50kLCfi0FO9oQpaQ", "account_id": "dbid:AACyExy5ZQmkhFLnJtcV7r7cD2mNzKRZxns",
+        "email": "testemployee@taskel.it", "email_verified": false, "secondary_emails":
+        [], "status": {".tag": "removed", "is_recoverable": false, "is_disconnected":
+        false}, "name": {"given_name": "user", "surname": "test", "familiar_name":
+        "user", "display_name": "user test", "abbreviated_name": "UT"}, "membership_type":
+        {".tag": "full"}, "joined_on": "2024-06-11T15:49:48Z", "groups": [], "member_folder_id":
+        "5066715473", "root_folder_id": "5066715473"}, "roles": [{"role_id": "pid_dbtmr:AAAAAFMcx6E0tax39Kb0H671TzWLeE07dwaqFQ5fDRy2",
+        "name": "Team", "description": "Manage everything and access all permissions"}]},
+        {"profile": {"team_member_id": "dbmid:AAAFF8MbWxXeHGxBl7omKQci-Ql-C7K3XgQ",
+        "account_id": "dbid:AADM-eppmo4t0gSoBFH84Pm-ZCFTRrskP_g", "email": "shaik.ameed@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "test", "surname": "Ameed", "familiar_name": "test", "display_name": "test
+        Ameed", "abbreviated_name": "TA"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-11T03:26:31Z", "groups": [], "member_folder_id": "5062733201", "root_folder_id":
+        "5062733201"}}, {"profile": {"team_member_id": "dbmid:AABcDFdz4XcLk96Wa6oUnqtO63dShDdkfuk",
+        "account_id": "dbid:AACJP9qaUbUZyXpeThj5wHW1YWW0UR6Cnpk", "email": "shaik.ameed@taskel.it",
+        "email_verified": false, "secondary_emails": [], "status": {".tag": "removed",
+        "is_recoverable": false, "is_disconnected": false}, "name": {"given_name":
+        "test", "surname": "Ameed", "familiar_name": "test", "display_name": "test
+        Ameed", "abbreviated_name": "TA"}, "membership_type": {".tag": "full"}, "joined_on":
+        "2024-06-11T03:30:06Z", "groups": [], "member_folder_id": "5063056385", "root_folder_id":
+        "5063056385"}}], "cursor": "AADFH4H46VZKbGiNloZTGmQdtMz_VEP4ZFq74_jXdG4rK7isQLXHJ3In5aIljs4c9SjG02Xsj0a9bsuwyX4WqBFVj7zMWdM3wRGPeKTs3Ht3AA",
+        "has_more": true}'
+  recorded_at: Thu, 21 Nov 2024 07:21:50 GMT
+recorded_with: VCR 6.3.1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_14_032007) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_18_081309) do
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -64,6 +64,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_14_032007) do
     t.index ["cred_id"], name: "index_datadogs_on_cred_id"
   end
 
+  create_table "dropboxes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "cred_id", null: false
+    t.string "refresh_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cred_id"], name: "index_dropboxes_on_cred_id"
+  end
+
   create_table "employees", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -115,6 +123,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_14_032007) do
   add_foreign_key "connections", "orgs"
   add_foreign_key "creds", "connections"
   add_foreign_key "datadogs", "creds"
+  add_foreign_key "dropboxes", "creds"
   add_foreign_key "employees", "orgs"
   add_foreign_key "sentries", "creds"
   add_foreign_key "sessions", "users"
