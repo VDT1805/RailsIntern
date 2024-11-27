@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_26_022840) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_27_075636) do
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -18,7 +18,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_26_022840) do
     t.bigint "connection_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "third_party_id", null: false
     t.index ["connection_id"], name: "index_accounts_on_connection_id"
+    t.index ["third_party_id"], name: "index_accounts_on_third_party_id"
   end
 
   create_table "apps", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -55,11 +57,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_26_022840) do
   end
 
   create_table "dropboxes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "cred_id", null: false
     t.string "refresh_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cred_id"], name: "index_dropboxes_on_cred_id"
   end
 
   create_table "employees", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -109,7 +109,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_26_022840) do
   add_foreign_key "connections", "apps"
   add_foreign_key "connections", "orgs"
   add_foreign_key "creds", "connections"
-  add_foreign_key "dropboxes", "creds"
   add_foreign_key "employees", "orgs"
   add_foreign_key "sessions", "users"
   add_foreign_key "users", "orgs"

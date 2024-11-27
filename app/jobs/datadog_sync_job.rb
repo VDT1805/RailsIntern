@@ -4,16 +4,13 @@ class DatadogSyncJob < ApplicationJob
   def perform(job)
       datadog_credential = Datadog.find(job[:id])
       credential = Cred.find_by(credable_id: job[:id])
-      response = DatadogServices::ListUsers.new.call(
-        api_key: datadog_credential.api_key,
-        application_key: datadog_credential.application_key,
-        subdomain: datadog_credential.subdomain,
+      response = DatadogServices::ListUsers.new(datadog_credential).call(
         pagesize: job[:pagesize],
         page: job[:page]
       )
       account_attributes = JSON.parse(response.body)["data"].map do |acc|
         {
-          id: acc["id"],
+          third_party_id: acc["id"],
           connection_id: credential.connection_id,
           name: acc["attributes"]["name"],
           email: acc["attributes"]["email"],

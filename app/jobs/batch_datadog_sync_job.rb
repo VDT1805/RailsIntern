@@ -3,10 +3,7 @@ class BatchDatadogSyncJob < ApplicationJob
   PAGESIZE = 50
   def perform(job)
       datadog_credential = Datadog.find(job[:id])
-      response = DatadogServices::ListUsers.new.call(
-        api_key: datadog_credential.api_key,
-        application_key: datadog_credential.application_key,
-        subdomain: datadog_credential.subdomain,
+      response = DatadogServices::ListUsers.new(datadog_credential).call(
         pagesize: job[:pagesize] || 100,
         page: job[:page] || 0
     )
