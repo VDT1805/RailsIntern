@@ -22,7 +22,7 @@ http_interactions:
       content-security-policy:
       - sandbox allow-forms allow-scripts
       date:
-      - Thu, 21 Nov 2024 07:21:50 GMT
+      - Wed, 27 Nov 2024 09:54:32 GMT
       server:
       - envoy
       content-length:
@@ -30,52 +30,9 @@ http_interactions:
       x-dropbox-response-origin:
       - far_remote
       x-dropbox-request-id:
-      - 724cbe32115e48b599d8304e95dfc17c
+      - f4ac3d11a35645f081f8b9b0e895fd26
     body:
       encoding: UTF-8
       string: '{"error": "invalid_grant", "error_description": "refresh token is malformed"}'
-  recorded_at: Thu, 21 Nov 2024 07:21:51 GMT
-- request:
-    method: post
-    uri: https://api.dropbox.com/2/team/members/list_v2
-    body:
-      encoding: UTF-8
-      string: '{"include_removed":true,"limit":20}'
-    headers:
-      User-Agent:
-      - Faraday v2.12.0
-      Authorization:
-      - "<Bearer token>"
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 400
-      message: Bad Request
-    headers:
-      content-type:
-      - text/plain; charset=utf-8
-      cache-control:
-      - no-cache
-      content-security-policy:
-      - sandbox allow-forms allow-scripts
-      x-content-type-options:
-      - nosniff
-      x-dropbox-request-url:
-      - "/2/team/members/list_v2"
-      date:
-      - Thu, 21 Nov 2024 07:21:51 GMT
-      server:
-      - envoy
-      content-length:
-      - '110'
-      x-dropbox-response-origin:
-      - far_remote
-      x-dropbox-request-id:
-      - 16f5955aa1b64451add5dd30af1f22a6
-    body:
-      encoding: UTF-8
-      string: 'Error in call to API function "team/members/list_v2": Invalid authorization
-        value in HTTP header/URL parameter'
-  recorded_at: Thu, 21 Nov 2024 07:21:51 GMT
+  recorded_at: Wed, 27 Nov 2024 09:54:32 GMT
 recorded_with: VCR 6.3.1

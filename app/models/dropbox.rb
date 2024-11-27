@@ -1,5 +1,5 @@
 class Dropbox < ApplicationRecord
-  belongs_to :cred
+  include Credable
 
   encrypts :refresh_token
 
