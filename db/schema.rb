@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_27_075636) do
     t.datetime "updated_at", null: false
     t.string "third_party_id", null: false
     t.index ["connection_id"], name: "index_accounts_on_connection_id"
-    t.index ["third_party_id"], name: "index_accounts_on_third_party_id"
+    t.index ["third_party_id"], name: "index_accounts_on_third_party_id", unique: true
   end
 
   create_table "apps", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

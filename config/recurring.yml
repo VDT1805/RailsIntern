@@ -8,3 +8,14 @@
 #     command: "SoftDeletedRecord.due.delete_all"
 #     priority: 2
 #     schedule: at 5am every day
+development:
+  periodic_datadog_sync:
+    class: PeriodicDatadogSyncJob
+    queue: background
+    args: []
+    schedule: every 2 minutes
+  periodic_dropbox_sync:
+    class: PeriodicDropboxSyncJob
+    queue: background
+    args: []
+    schedule: every 5 minutes
