@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_18_081309) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_27_075636) do
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -18,17 +18,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_18_081309) do
     t.bigint "connection_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "third_party_id", null: false
     t.index ["connection_id"], name: "index_accounts_on_connection_id"
-  end
-
-  create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.bigint "org_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["org_id"], name: "index_admins_on_org_id"
+    t.index ["third_party_id"], name: "index_accounts_on_third_party_id", unique: true
   end
 
   create_table "apps", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -51,6 +43,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_18_081309) do
     t.bigint "connection_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "credable_type"
+    t.integer "credable_id"
     t.index ["connection_id"], name: "index_creds_on_connection_id"
   end
 
@@ -58,18 +52,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_18_081309) do
     t.string "application_key"
     t.string "subdomain"
     t.string "api_key"
-    t.bigint "cred_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cred_id"], name: "index_datadogs_on_cred_id"
   end
 
   create_table "dropboxes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "cred_id", null: false
     t.string "refresh_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cred_id"], name: "index_dropboxes_on_cred_id"
   end
 
   create_table "employees", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -90,10 +80,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_18_081309) do
   create_table "sentries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "organization_id"
     t.string "api_token"
-    t.bigint "cred_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cred_id"], name: "index_sentries_on_cred_id"
   end
 
   create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -118,14 +106,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_18_081309) do
   end
 
   add_foreign_key "accounts", "connections"
-  add_foreign_key "admins", "orgs"
   add_foreign_key "connections", "apps"
   add_foreign_key "connections", "orgs"
   add_foreign_key "creds", "connections"
-  add_foreign_key "datadogs", "creds"
-  add_foreign_key "dropboxes", "creds"
   add_foreign_key "employees", "orgs"
-  add_foreign_key "sentries", "creds"
   add_foreign_key "sessions", "users"
   add_foreign_key "users", "orgs"
 end

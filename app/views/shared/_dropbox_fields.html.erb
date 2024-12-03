@@ -1,3 +1,4 @@
+<h3>Connecting to <%= @app.name %></h3>
 <%=link_to "Connect to Dropbox", "https://www.dropbox.com/oauth2/authorize?client_id=#{Rails.application.credentials.dig(:dropbox, :app_key)}&response_type=code&token_access_type=offline&
 redirect_uri=#{oauth_callback_url(@app.name)}"%>
 
