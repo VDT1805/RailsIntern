@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_27_075636) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_04_072743) do
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -69,6 +69,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_27_075636) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["org_id"], name: "index_employees_on_org_id"
+  end
+
+  create_table "google_workspaces", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "refresh_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orgs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

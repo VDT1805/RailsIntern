@@ -74,3 +74,11 @@ gem "solid_queue", "~> 1.0"
 gem "mission_control-jobs", "~> 0.4.0"
 
 gem "bcrypt", "~> 3.1"
+
+gem "googleauth", "~> 1.11"
+
+gem "google-api-client", "~> 0.53.0"
+
+gem "aws-sdk-rails", "~> 5.0"
+
+gem "aws-sdk-sqs", "~> 1.89"
