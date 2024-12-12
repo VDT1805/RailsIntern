@@ -19,7 +19,7 @@ module DropboxServices
           req.body = URI.encode_www_form(form_data)
       end
       if response.status == 200
-        response
+        return JSON.parse(response.body)["access_token"]
       else
         raise StandardError, "Dropbox API request failed with status: #{response.status} and body: #{response.body}"
       end
@@ -39,7 +39,7 @@ module DropboxServices
           req.body = URI.encode_www_form(form_data)
       end
         if response.status == 200
-            response
+          return JSON.parse(response.body)["refresh_token"]
         else
             raise StandardError, "Dropbox API request failed with status: #{response.status} and body: #{response.body}"
         end
