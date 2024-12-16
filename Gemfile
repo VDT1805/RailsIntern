@@ -69,7 +69,7 @@ gem "byebug", "~> 11.1", :groups => [:development, :test]
 
 gem "vcr", "~> 6.3"
 
-gem "solid_queue", "~> 1.0"
+gem "solid_queue", "~> 1.1"
 
 gem "mission_control-jobs", "~> 0.4.0"
 
