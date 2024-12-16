@@ -82,3 +82,5 @@ gem "google-api-client", "~> 0.53.0"
 gem "aws-sdk-rails", "~> 5.0"
 
 gem "aws-sdk-sqs", "~> 1.89"
+
+gem "shoryuken", "~> 6.2"
