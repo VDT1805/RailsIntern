@@ -1,10 +1,10 @@
 class OauthController < ApplicationController
   def oauth_callback
-      # Exchange auth_code for refresh token and access token
-      auth_code = params[:code]
-      response = DropboxServices::GetTokens.new.get_refresh_token(auth_code,oauth_callback_url)
-      refresh_token = JSON.parse(response.body)["refresh_token"]
+      # Exchange auth_code for refresh token
       app = App.find_by(name: params[:app_name])
+      auth_code = params[:code]
+      refresh_token = "#{app.name}Services".constantize::GetTokens.new.get_refresh_token(auth_code,oauth_callback_url)
+
       org = Current.user.org
       @conn = Connection.new(app:app,org:org)
       connection_attributes = {

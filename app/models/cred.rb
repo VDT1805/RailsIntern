@@ -1,5 +1,5 @@
 class Cred < ApplicationRecord
-  delegated_type :credable, types: %w[ Datadog Dropbox Sentry ], dependent: :destroy
+  delegated_type :credable, types: %w[ Datadog Dropbox Sentry GoogleWorkspace], dependent: :destroy
 
   belongs_to :connection
 

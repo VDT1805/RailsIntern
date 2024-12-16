@@ -3,6 +3,7 @@ class ConnectionsController < ApplicationController
     @org = Current.user.org
     @connections = @org.connections
   end
+  
   def show
     @conn = Connection.find(params[:id])
     @app = @conn.app
@@ -28,9 +29,6 @@ class ConnectionsController < ApplicationController
   end
 
   private
-
-
-
   def connection_params
     params.require(:connection).permit(
         cred_attributes: [
