@@ -79,6 +79,6 @@ gem "googleauth", "~> 1.11"
 
 gem "google-api-client", "~> 0.53.0"
 
-gem "aws-sdk-rails", "~> 5.0"
+gem "aws-sdk-rails", "~> 5.1"
 
 gem "aws-sdk-sqs", "~> 1.89"
