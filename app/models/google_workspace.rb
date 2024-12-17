@@ -5,10 +5,10 @@ class GoogleWorkspace < ApplicationRecord
 
   validates :refresh_token, presence: true
   after_save_commit do
-    # GoogleWorkspaceSyncJob.perform_later(self.id)
-    region = 'us-east-1'
+    region = Rails.application.credentials.dig(:aws,:region)
     request_queue_name = 'request-queue'
     message_body = {
+      org_id: Current.user.org.id,
       client_id: Rails.application.credentials.dig(:google, :client_id),
       client_secret: Rails.application.credentials.dig(:google, :client_secret),
       refresh_token: self.refresh_token
