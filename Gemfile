@@ -75,7 +75,7 @@ gem "mission_control-jobs", "~> 0.4.0"
 
 gem "bcrypt", "~> 3.1"
 
-gem "googleauth", "~> 1.11"
+gem "googleauth", "~> 1.12"
 
 gem "google-api-client", "~> 0.53.0"
 
