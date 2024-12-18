@@ -1,0 +1,12 @@
+<h3> <%=@employee.name%> </h3>
+<h4> <%=@employee.email%> </h4>
+<h2>Accessed Apps</h2>
+<% if @apps.length == 0%>
+<h5> None at the moment </h5>
+<% else %>
+<% @apps.each do |app|%>
+    <li>
+        <%= app.name %>
+    </li>
+<%end%>
+<% end %>

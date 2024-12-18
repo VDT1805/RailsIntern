@@ -3,7 +3,7 @@ class DropboxSyncJob < ApplicationJob
 
   def perform(id, limit, include_removed = false)
     dropbox_credential = Dropbox.find(id)
-    credential = Cred.find_by(credable_id: id)
+    credential = Cred.dropboxes.find_by(credable_id: id)
     access_token = DropboxServices::GetTokens.new.get_access_token(dropbox_credential.refresh_token)
     fetch_members_service = DropboxServices::FetchMembers.new
     response = fetch_members_service.fetch_members(access_token: access_token, limit: limit, include_removed: include_removed)

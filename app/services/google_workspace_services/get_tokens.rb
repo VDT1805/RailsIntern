@@ -15,7 +15,6 @@ module GoogleWorkspaceServices
     def get_refresh_token(auth_code, oauth_callback_url)
         auth_client.code = auth_code
         auth_client.fetch_access_token!
-        # abort
         auth_client.refresh_token
     end
 

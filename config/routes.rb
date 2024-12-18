@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :apps, only: [ :index ] do
       resources :connections, only: [ :new, :create ]
   end
+  resources :employees, only: [ :index, :show ]
   mount MissionControl::Jobs::Engine, at: "/jobs"
 
   get "oauth_callback/:app_name", to: "oauth#oauth_callback", as: :oauth_callback
