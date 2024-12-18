@@ -3,7 +3,7 @@ class DatadogSyncJob < ApplicationJob
 
   def perform(job)
       datadog_credential = Datadog.find(job[:id])
-      credential = Cred.find_by(credable_id: job[:id])
+      credential = Cred.datadogs.find_by(credable_id: job[:id])
       response = DatadogServices::ListUsers.new(datadog_credential).call(
         pagesize: job[:pagesize],
         page: job[:page]

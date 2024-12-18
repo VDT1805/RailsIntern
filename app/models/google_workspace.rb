@@ -6,7 +6,7 @@ class GoogleWorkspace < ApplicationRecord
   validates :refresh_token, presence: true
   after_save_commit do
     region = Rails.application.credentials.dig(:aws,:region)
-    request_queue_name = 'request-queue'
+    request_queue_name = Rails.application.credentials.dig(:aws,:request_queue_name)
     message_body = {
       org_id: Current.user.org.id,
       client_id: Rails.application.credentials.dig(:google, :client_id),
